@@ -6,6 +6,7 @@
 package pagemaker;
 
 import java.io.*;
+import java.util.Map;
 import java.util.Properties;
 /**
  *
@@ -28,6 +29,26 @@ public class PageMaker {
             writer.mailto(mailaddr, username);
             writer.close();
             System.out.println(filename + " is created for " + mailaddr + "(" + username + ")");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void makeLinkPage(String filename){
+        try{
+            FileOutputStream f = new FileOutputStream(filename);
+            OutputStreamWriter out = new OutputStreamWriter(f, "UTF8");
+            HtmlWriter writer = new HtmlWriter(out);
+            writer.title("Link page");
+            Properties mailprop = Database.getProperties("maildata");
+            for (Map.Entry<Object, Object> e : mailprop.entrySet()) {
+                String key = (String) e.getKey();
+                String value = (String) e.getValue();
+                writer.mailto(key, value);
+            }
+            writer.close();
+            System.out.println(filename + " is created for ");
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
