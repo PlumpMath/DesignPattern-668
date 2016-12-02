@@ -10,7 +10,7 @@ import java.io.*;
  *
  * @author wataru
  */
-public class HtmlWriter {
+class HtmlWriter {
     private OutputStreamWriter writer;
     public HtmlWriter(OutputStreamWriter writer){
         this.writer = writer;

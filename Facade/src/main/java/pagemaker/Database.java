@@ -12,7 +12,7 @@ import java.util.Properties;
  *
  * @author wataru
  */
-public class Database {
+class Database {
     private Database(){
         
     }
